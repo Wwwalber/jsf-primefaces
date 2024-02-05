@@ -23,9 +23,43 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.14</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope><!-- informa a não necessidade de empacotar
+                esses jar's, já que são fornecidos pelo servidor onde vai ser 
+                executados 
+                maven, coloque no path esta dependência, mas não no pacote -->
+        </dependency>
+        <dependency><!-- referente a API de validação -->
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.3.2.Final</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <dependency><!-- dependências relacionadas a persistência -->
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.15.Final</version>
+            <scope>compile</scope>
+        </dependency><!-- hibernate entity-manager já está imbutido -->
     </dependencies>
     
-     <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
