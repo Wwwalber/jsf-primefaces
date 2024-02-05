@@ -1,2 +1,5 @@
 com/mavenproject/resources/JavaEE8Resource.class
+com/mavenproject/erp/model/TipoEmpresa.class
 com/mavenproject/JAXRSConfiguration.class
+com/mavenproject/erp/model/RamoAtividade.class
+com/mavenproject/erp/model/Empresa.class
