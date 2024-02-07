@@ -30,10 +30,3 @@ nb-configuration.xml
 ##############################
 .vscode/
 .code-workspace
-target/jsf-primefaces-artifact-1.0-SNAPSHOT.war
-target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
-target/jsf-primefaces-artifact-1.0-SNAPSHOT/WEB-INF/classes/com/mavenproject/resources/JavaEE8Resource.class
-target/jsf-primefaces-artifact-1.0-SNAPSHOT/WEB-INF/classes/com/mavenproject/JAXRSConfiguration.class
-target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
-target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-target/classes/META-INF/persistence.xml
