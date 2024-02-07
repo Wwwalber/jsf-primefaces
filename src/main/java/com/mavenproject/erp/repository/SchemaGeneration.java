@@ -1,4 +1,4 @@
-package com.mavenproject.erp.model.repository;
+package com.mavenproject.erp.repository;
 
 import com.mavenproject.erp.model.Empresa;
 import java.util.List;
