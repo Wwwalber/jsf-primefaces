@@ -18,7 +18,7 @@ import com.mavenproject.erp.model.TipoEmpresa;
 public class CamadaPersistencia {
     public static void main(String[] args) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AlgaWorksPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jsf_prime_PU");
 
         EntityManager em = emf.createEntityManager();
     
