@@ -23,6 +23,12 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
+                <!-- inserindo a implementação da especificação de CDI -->
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-core</artifactId>
+            <version>4.0.1.Final</version>
+        </dependency>  
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
