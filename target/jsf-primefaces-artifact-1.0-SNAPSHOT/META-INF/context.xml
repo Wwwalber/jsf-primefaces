@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/jsf"/>
+<Context path="/jsf">
+    <Manager pathname="/jsf" />
+    <Resource 
+        auth="Container"
+        name="BeanManager" 
+        type="javax.enterprise.inject.spi.BeanManager" 
+        factory="org.jboss.weld.resources.ManagerObjectFactory" />
+</Context>
