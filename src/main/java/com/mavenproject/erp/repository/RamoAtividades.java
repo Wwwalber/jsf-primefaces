@@ -1,13 +1,15 @@
 package com.mavenproject.erp.repository;
-import com.mavenproject.erp.model.RamoAtividade;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import com.mavenproject.erp.model.RamoAtividade;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.persistence.criteria.Root;
 public class RamoAtividades implements Serializable{
     private static final Long serialVersionUID = 1L;
     
+    @Inject   // assim eu não preciso iniciar e fechar as transações manualmente
     private EntityManager manager;
 
     public RamoAtividades(){
