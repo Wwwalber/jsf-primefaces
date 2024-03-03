@@ -118,4 +118,31 @@
             </plugin>
         </plugins>
     </build>
+
+
+    <dependencyManagement>
+    
+
+        <dependencies>
+
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>3.4.3.Final</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.fasterxml</groupId>
+                <artifactId>classmate</artifactId>
+                <version>1.5.1</version>
+            </dependency>
+
+        
+
+            
+
+        </dependencies>
+
+    </dependencyManagement>
 </project>
