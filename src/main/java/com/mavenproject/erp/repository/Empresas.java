@@ -1,16 +1,19 @@
 package com.mavenproject.erp.repository;
 
-import com.mavenproject.erp.model.Empresa;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+
+import com.mavenproject.erp.model.Empresa;
 
 
 public class Empresas implements Serializable{
     private static final Long serialVersionUID = 1L;
 
+    @Inject  // assim eu não preciso iniciar e fechar as transações manualmente
     private EntityManager manager;
 
     public Empresas(){
