@@ -18,36 +18,31 @@
         <h:graphicImage library="img" name="logo.png"/>
     </header>
     <div id="conteudo">
-        <!-- enviar comunicações com Java -->
         <h:form id="formulario">
-            <!-- foco do panegrid apenas ajuste de layout-->
-            <h:panelGrid columns="2"><!-- imprime tabelas -->
-                <h:outputLabel value="Razão social: " for="razaosocial" /><!-- for coloca o foco no id correspondente -->
+            <h:panelGrid columns="2">
+ 
+                <h:outputLabel value="Razão social: " for="razaosocial" />
                 <h:inputText id="razaosocial" />
 
-                <h:outputLabel value="Nome fantasia: " for="nomefantasia" /><!-- for coloca o foco no id correspondente -->
+                <h:outputLabel value="Nome fantasia: " for="nomefantasia" /> 
                 <h:inputText id="nomefantasia" />
 
                 <h:outputLabel value="Tipo empresa" for="tipo" />
-                <h:selectOneMenu id="tipo" ><!-- tag select do html -->
-                            <!-- tipo vem do model Empresa  -->
-                
+                <h:selectOneMenu id="tipo" >
                     <f:selectItem itemLabel="Selecione..." />
                     <f:selectItem itemLabel="MEI" itemValue="MEI" />
                     <f:selectItem itemLabel="LTDA" itemValue="LTDA" />
                 </h:selectOneMenu>
 
-                <h:outputLabel /><!-- só para ocupar espaço na coluna esquerda (que vai ficar em branco)-->
-                <h:commandButton value="Salvar" />
+                <h:outputLabel for="btn-salvar" />
+                <h:commandButton id="btn-salvar" value="Salvar" />
             </h:panelGrid>
 
-             <!-- foco do dataTable listar dados -->
-            <h:dataTable value="#{[0,0,0,0]}"> <!-- 0,0,0,0 só para ver as linhas enquanto não temo links com dados -->
+            <h:dataTable value="#{[0,0,0,0]}">  
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Razão Social" />
                     </f:facet>
-                    <!-- valor para  linhas-->
                     <h:outputText value="Alga Works Software, Treinamento LTDA" />
                 </h:column>
 
@@ -55,7 +50,6 @@
                     <f:facet name="header">
                         <h:outputText value="Nome Fantasia" />
                     </f:facet>
-                    <!-- valor para  linhas-->
                     <h:outputText value="Alga Works Software, Treinamento LTDA" />
                 </h:column>
 
@@ -63,7 +57,6 @@
                     <f:facet name="header">
                         <h:outputText value="Tipo Empresa" />
                     </f:facet>
-                    <!-- valor para  linhas-->
                     <h:outputText value="Alga Works Software, Treinamento LTDA" />
                 </h:column>
 
