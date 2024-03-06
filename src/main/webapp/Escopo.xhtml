@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      <!-- diferencia prefixo jsf vs. html -->
+<!-- Seus componentes JSF aqui -->
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gestão Empresas</title>
+    <h:outputStylesheet library="css" name="estilo.css" />
+</h:head>
+<h:body>
+    <header>
+        <h:graphicImage library="img" name="logo.png"/>
+    </header>
+    <div id="conteudo">
+        <h:form id="formulario">
+            <h:panelGrid columns="2">
+ 
+                <h:outputLabel value="Número: " />
+                <h:outputLabel value="#{gestaoEmpresasBean.numero}" />
+                
+                <h:outputLabel for="btn-salvar" />
+                <h:commandButton id="btn-salvar" value="Salvar" />
+            </h:panelGrid>
+
+        </h:form>
+    </div>
+    <footer>
+        Curso online "JSF e Primefaces"
+    </footer>
+</h:body>
+</html>
