@@ -1,12 +1,12 @@
 package com.mavenproject.erp.controller;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 @Named
-@SessionScoped// se inicia quando é criada a seção
+@ApplicationScoped // se inicia somente uma instância do escopo durante toda a aplicação
 public class GestaoEmpresasBean implements Serializable{
     
     private static final long serialVersionUID = 1L;
