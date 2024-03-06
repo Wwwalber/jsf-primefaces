@@ -1,12 +1,15 @@
 package com.mavenproject.erp.controller;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
-@RequestScoped // instância criada/encerrada com a requisição
-public class GestaoEmpresasBean {
+@ViewScoped // se inicia quando o usuário entrar na página. Ou seja, mesmo enviando chamadas post não há mais iteração
+public class GestaoEmpresasBean implements Serializable{
     
+    private static final long serialVersionUID = 1L;
+        
     private static Integer NUMERO = 0;
 
     public GestaoEmpresasBean(){
