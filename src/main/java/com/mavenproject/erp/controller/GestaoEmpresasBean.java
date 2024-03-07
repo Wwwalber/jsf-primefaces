@@ -2,25 +2,30 @@ package com.mavenproject.erp.controller;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import com.mavenproject.erp.model.Empresa;
+import com.mavenproject.erp.model.TipoEmpresa;
+
 @Named
-@ApplicationScoped // se inicia somente uma instância do escopo durante toda a aplicação
+@ViewScoped // se inicia quando o usuário entrar na página. Ou seja, mesmo enviando chamadas post não há mais iteração
 public class GestaoEmpresasBean implements Serializable{
     
     private static final long serialVersionUID = 1L;
         
-    private static Integer NUMERO = 0;
+    private Empresa empresa = new Empresa();
 
-    public GestaoEmpresasBean(){
-        NUMERO++; //sempre passa por aqui ao instanciar essa classe
-    }
-
-    public Integer getNumero() {
-        return NUMERO;
+    public Empresa getEmpresa() {
+        return empresa;
     }
     
-    
-    
+    public TipoEmpresa[] getTiposEmpresa(){
+        return TipoEmpresa.values();// busca no Enum
+    }
+    public void salvar(){
+        System.out.println("Razão Social: " + empresa.getRazaoSocial()
+        + " - Nome Fantasia: "+ empresa.getNomeFantasia()
+        + " - Tipo: "+ empresa.getTipo());
+    }
 }
