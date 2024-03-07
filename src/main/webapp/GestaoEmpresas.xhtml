@@ -28,7 +28,7 @@
                 <h:inputText id="nomefantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}"/>
 
                 <h:outputLabel value="Tipo empresa" for="tipo" />
-                <h:selectOneMenu id="tipo" >
+                <h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}">
                     <f:selectItem itemLabel="Selecione..." />
                     <f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
                         var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
