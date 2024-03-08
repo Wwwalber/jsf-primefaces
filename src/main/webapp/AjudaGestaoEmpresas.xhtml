@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      <!-- diferencia prefixo jsf vs. html -->
+<!-- Seus componentes JSF aqui -->
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ajuda</title>
+    <h:outputStylesheet library="css" name="estilo.css" />
+</h:head>
+<h:body>
+    <header>
+        <h:graphicImage library="img" name="logo.png"/>
+    </header>
+    <h2>Ajuda</h2>
+    <div id="conteudo">
+        <h:form id="formulario">
+          <p>Esta é a ajuda da página de cadastro de empresas.</p>
+          <p>
+              <h:commandLink value="Voltar" action="GestaoEmpresas"/>
+          </p>
+        </h:form>
+    </div>
+    <footer>
+        Curso online "JSF e Primefaces"
+    </footer>
+</h:body>
+</html>
