@@ -31,5 +31,7 @@ public class GestaoEmpresasBean implements Serializable{
     
     public String ajuda(){
         return "AjudaGestaoEmpresas?faces-redirect=true";
+        // com o faces-redirect=true o browser passa a ter conhecimento 
+        // de mudandça da url. O que denomina-se "navegação explícita"
     }
 }
