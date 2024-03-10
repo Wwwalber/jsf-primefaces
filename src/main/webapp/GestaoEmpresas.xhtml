@@ -22,18 +22,41 @@
             <h:panelGrid columns="2">
  
                 <h:outputLabel value="Razão social: " for="razaoSocial" />
-                <h:inputText id="razaoSocial" value="#{gestaoEmpresasBean.empresa.razaoSocial}"/>
+                <h:panelGroup>
+                    <h:inputText id="razaoSocial" value="#{gestaoEmpresasBean.empresa.razaoSocial}" required="true"
+                        label="razaoSocial"/>
+                    <h:message for="razaoSocial" />
+                </h:panelGroup>
 
                 <h:outputLabel value="Nome fantasia: " for="nomefantasia" /> 
                 <h:inputText id="nomefantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}"/>
 
                 <h:outputLabel value="Tipo empresa" for="tipo" />
-                <h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}">
+                <h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}" >
                     <f:selectItem itemLabel="Selecione..." />
                     <f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
                         var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
                         itemValue="#{tipoEmpresa}" />
                 </h:selectOneMenu>
+
+                <h:outputLabel value="Data fundação: " for="dataFundacao" /> 
+                <h:panelGroup>
+                    <h:inputText id="dataFundacao" value="#{gestaoEmpresasBean.empresa.dataFundacao}"
+                        label="dataFundacao">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    <h:message for="dataFundacao" />
+                </h:panelGroup>
+
+                <h:outputLabel value="Faturamento: " for="faturamento" />           
+                <h:panelGroup>
+                    <h:inputText id="faturamento" value="#{gestaoEmpresasBean.empresa.faturamento}" 
+                        label="faturamento">
+                        <f:convertNumber pattern="#,##0.00" />
+						<f:validateDoubleRange minimum="0" />
+                    </h:inputText>
+                    <h:message for="faturamento" />
+                </h:panelGroup>
 
                 <h:outputLabel for="btn-salvar" />
                 <h:commandButton id="btn-salvar" value="Salvar" actionListener="#{gestaoEmpresasBean.salvar}"/>
