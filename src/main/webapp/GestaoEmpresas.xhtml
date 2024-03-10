@@ -32,12 +32,25 @@
                 <h:inputText id="nomefantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}"/>
 
                 <h:outputLabel value="Tipo empresa" for="tipo" />
-                <h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}" >
-                    <f:selectItem itemLabel="Selecione..." />
-                    <f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
-                        var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
-                        itemValue="#{tipoEmpresa}" />
-                </h:selectOneMenu>
+                <h:panelGroup>
+                    <h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}" required="true">
+                        <f:selectItem itemLabel="Selecione..." />
+                        <f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
+                            var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
+                            itemValue="#{tipoEmpresa}" />
+                    </h:selectOneMenu>
+                    <h:message for="tipo" />
+
+                </h:panelGroup>
+
+                <h:outputLabel value="CNPJ: " for="cnpj" /> 
+                <h:panelGroup>
+                    <h:inputText id="cnpj" value="#{gestaoEmpresasBean.empresa.cnpj}"
+                        label="CNPJ">
+                        <f:validateLength maximum="18" minimum="18" />
+                    </h:inputText>
+                    <h:message for="cnpj" />
+                </h:panelGroup>
 
                 <h:outputLabel value="Data fundação: " for="dataFundacao" /> 
                 <h:panelGroup>
