@@ -33,7 +33,9 @@ public class Empresas implements Serializable{
         query.setParameter("nomeFantasia", nome + "%");
         return query.getResultList();
     }
-
+    public List<Empresa> todas(){
+        return manager.createQuery("from Empresa", Empresa.class).getResultList();
+    }
     public Empresa guardar(Empresa empresa){
         return manager.merge(empresa);
     }

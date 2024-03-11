@@ -13,14 +13,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Gestão Empresas</title>
     <h:outputStylesheet library="css" name="estilo.css" />
+
+    <ui:remove>chamada do método para preencher a dataTable</ui:remove>
+    <f:metadata>
+        <f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
+    </f:metadata>
 </h:head>
 <h:body>
     <header>
         <h:graphicImage library="img" name="logo.png"/>
     </header>
+    <h2>Cadastro de Empresas</h2>
     <div id="conteudo">
+        <p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+            var="empresa" emptyMessage="Nenhuma informação a ser exibida"><ui:remove>esta variável tem acesso lá na classe Java a entidade Empresa</ui:remove>
+            <p:column headerText="Razão Social">
+                <h:outputText value="#{empresa.razaoSocial}" />
+            </p:column>
 
-        
+            <p:column headerText="Nome Fantasia">
+                <h:outputText value="#{empresa.nomeFantasia}" />
+            </p:column>
+
+            <p:column headerText="Tipo Empresa">
+                <h:outputText value="#{empresa.tipo}" />
+            </p:column>
+
+            
+            <p:column headerText="Ramo Atividade">
+                <h:outputText value="#{empresa.ramoAtividade.descricao}" />
+            </p:column>
+        </p:dataTable>
     </div>
     <footer>
         Curso online "JSF e Primefaces"
