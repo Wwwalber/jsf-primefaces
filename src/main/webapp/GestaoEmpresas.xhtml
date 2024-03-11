@@ -30,8 +30,11 @@
                 </h:panelGroup>
 
                 <p:outputLabel value="Nome fantasia: " for="nomefantasia" /> 
-                <p:inputText id="nomefantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" required="true"/>
-
+                <h:panelGroup>
+                    <p:inputText id="nomefantasia" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" required="true"/>
+                    <p:message for="nomefantasia" />
+                </h:panelGroup>
+                
                 <p:outputLabel value="Tipo empresa" for="tipo" />
                 <h:panelGroup>
                     <p:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}" required="true">
@@ -73,8 +76,13 @@
                 </h:panelGroup>
 
                 <p:outputLabel for="btn-salvar" />
-                <p:commandButton id="btn-salvar" value="Salvar" actionListener="#{gestaoEmpresasBean.salvar}"/>
-
+                <p:commandButton id="btn-salvar" value="Salvar" actionListener="#{gestaoEmpresasBean.salvar}"
+                    update="@form"/>
+                    <ui:remove>
+                        Primefaces trabalha com ajax por padrão, assim temos que informar o que queremos
+                        atualizar
+                        * @id-do-formulario   ou usando o atalho @form
+                    </ui:remove>
                 <p:outputLabel for="btn-ajuda" />
                 <p:commandLink id="btn-ajuda" value="Ajuda?" action="#{gestaoEmpresasBean.ajuda}"/>
             </h:panelGrid>
