@@ -26,7 +26,8 @@
     <h2>Cadastro de Empresas</h2>
     <div id="conteudo">
         <p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
-            var="empresa" emptyMessage="Nenhuma informação a ser exibida"><ui:remove>esta variável tem acesso lá na classe Java a entidade Empresa</ui:remove>
+            var="empresa" emptyMessage="Nenhuma informação a ser exibida"
+            paginator="true" rows="2" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
             <p:column headerText="Razão Social">
                 <h:outputText value="#{empresa.razaoSocial}" />
             </p:column>
