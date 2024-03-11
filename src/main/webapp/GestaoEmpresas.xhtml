@@ -1,55 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      template="WEB-INF/template/Layout.xhtml">
+
+      <ui:remove>a tag html agora</ui:remove>
       <!-- diferencia prefixo jsf vs. html -->
 <!-- Seus componentes JSF aqui -->
+<ui:remove>head e header não precisamos mais aqui porque já está no template</ui:remove>
 
-<h:head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Gestão Empresas</title>
-    <h:outputStylesheet library="css" name="estilo.css" />
-
+<ui:define name="titulo">
+    Cadastro de Empresas
+</ui:define>
+<ui:remove>a tag body agora</ui:remove> <ui:remove>renderidado no tamplate na posição de mesmo 'name'</ui:remove>
+<ui:define name="conteudo"> <ui:remove>será renderidado no tamplate na posição de mesmo 'name'</ui:remove>
     <ui:remove>chamada do método para preencher a dataTable</ui:remove>
     <f:metadata>
         <f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
     </f:metadata>
-</h:head>
-<h:body>
-    <header>
-        <h:graphicImage library="img" name="logo.png"/>
-    </header>
-    <h2>Cadastro de Empresas</h2>
-    <div id="conteudo">
-        <h:form>
-            <p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
-                var="empresa" emptyMessage="Nenhuma informação a ser exibida"
-                paginator="true" rows="2" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
-                <p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
-                    <h:outputText value="#{empresa.razaoSocial}" />
-                </p:column>
-    
-                <p:column headerText="Nome Fantasia">
-                    <h:outputText value="#{empresa.nomeFantasia}" />
-                </p:column>
-    
-                <p:column headerText="Tipo Empresa">
-                    <h:outputText value="#{empresa.tipo}" />
-                </p:column>
-    
-                
-                <p:column headerText="Ramo Atividade">
-                    <h:outputText value="#{empresa.ramoAtividade.descricao}" />
-                </p:column>
-            </p:dataTable>
-        </h:form>
-    </div>
-    <footer>
-        Curso online "JSF e Primefaces"
-    </footer>
-</h:body>
-</html>
+
+    <h:form>
+        <p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+            var="empresa" emptyMessage="Nenhuma informação a ser exibida"
+            paginator="true" rows="2" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
+            <p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
+                <h:outputText value="#{empresa.razaoSocial}" />
+            </p:column>
+
+            <p:column headerText="Nome Fantasia">
+                <h:outputText value="#{empresa.nomeFantasia}" />
+            </p:column>
+
+            <p:column headerText="Tipo Empresa">
+                <h:outputText value="#{empresa.tipo}" />
+            </p:column>
+
+            
+            <p:column headerText="Ramo Atividade">
+                <h:outputText value="#{empresa.ramoAtividade.descricao}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+</ui:define>
+</ui:composition>

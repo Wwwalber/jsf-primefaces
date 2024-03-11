@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      <!-- diferencia prefixo jsf vs. html -->
+<!-- Seus componentes JSF aqui -->
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gestão Empresas</title>
+    <h:outputStylesheet library="css" name="estilo.css" />
+
+</h:head>
+<h:body>
+    <header>
+        <h:graphicImage library="img" name="logo.png"/>
+    </header>
+    <h2>
+        <ui:insert name="titulo"  /> <ui:remove>o título das páginas que utilizaren esse tamplate, será carregado aqui</ui:remove>
+    </h2>
+    <div id="conteudo">
+        <ui:insert name="conteudo" /> <ui:remove>o conteúdo das páginas que utilizaren esse tamplate, será carregado aqui</ui:remove>
+    </div>
+    <footer>
+        Curso online "JSF e Primefaces"
+    </footer>
+</h:body>
+</html>
