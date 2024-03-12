@@ -23,6 +23,29 @@
     </f:metadata>
 
     <h:form>
+        <p:toolbar id="toolbar">
+            <f:facet name="left">
+                <p:inputText placeholder="digite um termo para pesquisa..." size="30" />
+                <p:commandButton value="Pesquisar" type="button" icon="fa fa-search"/>
+               
+                <p:divider layout="vertical" />
+
+                <p:commandButton value="Nova" icon="fa fa-plus"/>
+               
+                <p:divider layout="vertical" />
+
+                <p:commandButton title="Editar" icon="fa fa-edit"/> 
+    
+                <p:commandButton title="Excluir" icon="fa fa-trash"/>
+    
+                <p:divider layout="vertical" /> 
+    
+                <p:commandButton title="Exportar para o Excel" icon="fa fa-file-excel-o"/>
+            </f:facet>
+
+        </p:toolbar>
+        <p:spacer height="20px" />
+
         <p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
             var="empresa" emptyMessage="Nenhuma informação a ser exibida"
             paginator="true" rows="2" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
@@ -44,6 +67,5 @@
             </p:column>
         </p:dataTable>
     </h:form>
-
 </ui:define>
 </ui:composition>
