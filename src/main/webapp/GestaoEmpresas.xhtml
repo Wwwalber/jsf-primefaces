@@ -25,20 +25,27 @@
     <h:form>
         <p:toolbar id="toolbar">
             <f:facet name="left">
-                <p:inputText placeholder="digite um termo para pesquisa..." size="30" />
+                <p:inputText placeholder="digite um termo para pesquisa..." />
                 <p:commandButton value="Pesquisar" type="button" icon="fa fa-search"/>
-               
-                <p:divider layout="vertical" />
+                <p:spacer height="20px" />
+
+                <span class="ui-separator">
+                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                </span> 
 
                 <p:commandButton value="Nova" icon="fa fa-plus"/>
-               
-                <p:divider layout="vertical" />
 
+                <span class="ui-separator">
+                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                </span>     
+                
                 <p:commandButton title="Editar" icon="fa fa-edit"/> 
     
                 <p:commandButton title="Excluir" icon="fa fa-trash"/>
     
-                <p:divider layout="vertical" /> 
+                <span class="ui-separator">
+                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                </span>  
     
                 <p:commandButton title="Exportar para o Excel" icon="fa fa-file-excel-o"/>
             </f:facet>
