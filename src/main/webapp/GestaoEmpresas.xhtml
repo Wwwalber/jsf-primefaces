@@ -108,7 +108,11 @@
             <p:calendar id="dataFundacao" pattern="dd/MM/yyyy" size="30" />
 
             <p:outputLabel value="Ramo Atividade" for="ramoAtividade"/>           
-            <p:autoComplete id="ramoAtividade" size="80" />
+            <p:autoComplete id="ramoAtividade" size="80" 
+            completeMethod="#{gestaoEmpresasBean.completarRamoAtividade}"
+            converter="#{gestaoEmpresasBean.ramoAtividadConverter}" 
+            var="ramoAtividade" itemLabel="#{ramoAtividade.descricao}"
+            itemValue="#{ramoAtividade}" />
 
             <h:outputLabel /><ui:remove>somente para ocupar a coluna e assim ajustar a posição do botão</ui:remove>
             <p:commandButton value="Salvar" />
