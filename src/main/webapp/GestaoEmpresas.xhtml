@@ -25,13 +25,15 @@
     <h:form>
         <p:toolbar id="toolbar">
             <f:facet name="left">
-                <p:inputText placeholder="digite um termo para pesquisa..." />
-                <p:commandButton value="Pesquisar" type="button" icon="fa fa-search"/>
-                <p:spacer height="20px" />
-
-                <span class="ui-separator">
-                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                </span> 
+                <p:inputText placeholder="Digite aqui um termo para pesquisa..." 
+                size="30" value="#{gestaoEmpresasBean.termoPesquisa}"/>
+            
+            <p:commandButton value="Pesquisar" icon="fa fa-search"
+                actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable"/>
+            
+            <span class="ui-separator">
+                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+            </span>
 
                 <p:commandButton value="Nova" icon="fa fa-plus" 
                 onclick="PF('empresaDialogWidgetVar').show()" />
@@ -54,9 +56,10 @@
         </p:toolbar>
         <p:spacer height="20px" />
 
-        <p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+        <p:dataTable  id="empresasDataTable" value="#{gestaoEmpresasBean.listaEmpresas}"
             var="empresa" emptyMessage="Nenhuma informação a ser exibida"
-            paginator="true" rows="2" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
+            paginator="true" rows="4" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
+           
             <p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
                 <h:outputText value="#{empresa.razaoSocial}" />
             </p:column>
