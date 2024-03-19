@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.mavenproject.erp.model.Empresa;
+import com.mavenproject.erp.model.TipoEmpresa;
 import com.mavenproject.erp.repository.Empresas;
 import com.mavenproject.erp.util.FacesMessages;
 
@@ -48,6 +49,8 @@ public class GestaoEmpresasBean implements Serializable{
         return termoPesquisa;
     }
 
-
+    public TipoEmpresa[] getTipoEmpresa(){
+        return TipoEmpresa.values();
+    }
 
 }
