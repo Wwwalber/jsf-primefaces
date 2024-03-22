@@ -89,7 +89,9 @@
 
         <p:dialog id="empresaDialog" header="Nova empresa" widgetVar="empresaDialogWidgetVar" modal="true"
             resizable="false" closeOnEscape="true" >
-        <h:panelGrid id="empresaPanelGrid" columns="2"
+            <p:messages id="empresaMessages" />
+
+            <h:panelGrid id="empresaPanelGrid" columns="2"
             rendered="#{gestaoEmpresasBean.empresa ne null}" > <ui:remove>não renderizar antes que propriedade empresa esteja instanciada (ne null - not equal null)</ui:remove>
             <p:outputLabel value="Razão Social" for="razaoSocial" />
             <p:inputText id="razaoSocial" size="80" maxlength="120" 
@@ -130,10 +132,10 @@
 
             <h:outputLabel /><ui:remove>somente para ocupar a coluna e assim ajustar a posição do botão</ui:remove>
             <p:commandButton value="Salvar" actionListener="#{gestaoEmpresasBean.salvar}" 
-            update="empresasDataTable empresaPanelGrid"
+            update="empresasDataTable empresaPanelGrid empresaMessages"
             oncomplete="PF('empresaDialogWidgetVar').hide()" process="empresaDialog" />
 
-        </h:panelGrid>
+            </h:panelGrid>
         </p:dialog>
     </h:form>
 </ui:define>

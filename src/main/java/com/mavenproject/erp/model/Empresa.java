@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
 @Table(name = "empresa")
@@ -32,8 +33,7 @@ public class Empresa implements Serializable {
     private Long id;
     
     // obrigatório e não vazio
-    @NotNull //importar javax.validation.contraints
-    @Size(min=1)
+    @NotEmpty
     @Column(name = "nome_fantasia", nullable = false, length = 80)
     private String nomeFantasia;
 
@@ -43,6 +43,8 @@ public class Empresa implements Serializable {
     @Column(name = "razao_social", nullable = false, length = 120)
     private String razaoSocial;
     
+    //@org.hibernate.validator.constraints.
+    @CNPJ
     @NotNull
     @Column(nullable = false, length = 18)
     private String cnpj;
