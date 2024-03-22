@@ -16,7 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "empresa")
@@ -28,23 +31,34 @@ public class Empresa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    // obrigatório e não vazio
+    @NotNull //importar javax.validation.contraints
+    @Size(min=1)
     @Column(name = "nome_fantasia", nullable = false, length = 80)
     private String nomeFantasia;
 
+    /* @NotNull    
+    @Size(min=1) */
+    @NotEmpty //substitui @NotNull e @Size
     @Column(name = "razao_social", nullable = false, length = 120)
     private String razaoSocial;
     
+    @NotNull
     @Column(nullable = false, length = 18)
     private String cnpj;
     
+    @NotNull
+    @Past // obriga uma data no passado, mas somente se não for nulo
     @Temporal(TemporalType.DATE)
     @Column(name = "data_fundacao")
     private Date dataFundacao;
         
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "ramo_atividade_id", nullable = false)
     private RamoAtividade ramoAtividade;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
     private TipoEmpresa tipo;
