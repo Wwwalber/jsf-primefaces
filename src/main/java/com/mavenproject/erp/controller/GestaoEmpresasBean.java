@@ -13,6 +13,7 @@ import com.mavenproject.erp.model.RamoAtividade;
 import com.mavenproject.erp.model.TipoEmpresa;
 import com.mavenproject.erp.repository.Empresas;
 import com.mavenproject.erp.repository.RamoAtividades;
+import com.mavenproject.erp.service.CadastroEmpresaService;
 import com.mavenproject.erp.util.FacesMessages;
 
 @Named
@@ -24,16 +25,35 @@ public class GestaoEmpresasBean implements Serializable{
     @Inject
     private Empresas empresas;
     
-    @Inject
+    @Inject // CDI vai criar a instância e injetar
     private FacesMessages messages;
+
     private List<Empresa> listaEmpresas;
 
     @Inject
     private RamoAtividades ramoAtividades;
 
+    @Inject
+    private CadastroEmpresaService cadastroEmpresaService;
+
     private String termoPesquisa;
 
     private Converter ramoAtividadConverter;
+
+    private Empresa empresa;
+
+    public void prepararNovaEmpresa(){
+        empresa = new Empresa();
+    }
+
+    public void salvar(){
+        cadastroEmpresaService.salvar(empresa);// para salvar basta esse código
+        // acréscimo - ver se o usuário já disparou essa pesquisa
+        if (jaHouverPesquisa()) {
+            pesquisar();     // para atualizar        
+        }
+        messages.info("Empresa cadastrada com sucuesso!");
+    }
 
     public void pesquisar(){
         listaEmpresas = empresas.pesquisar(termoPesquisa);
@@ -52,23 +72,33 @@ public class GestaoEmpresasBean implements Serializable{
 
         return listaRamoAtividades;
     }
+
+    private boolean jaHouverPesquisa(){
+        return termoPesquisa != null && !"".equals(termoPesquisa);
+        // ... e(&&) se uma string vazia é diferente da propriedade termo pesquisa, então alguma pesquisa já foi disparada
+        // então vou dispará-la novamente para atualizar os dados presentes na DataTable
+    }
+
     public List<Empresa> getListaEmpresas() {
         return listaEmpresas;
+    }    
+    public String getTermoPesquisa() {
+        return termoPesquisa;
     }
 
     public void setTermoPesquisa(String termoPesquisa) {
         this.termoPesquisa = termoPesquisa;
     }
 
-    public String getTermoPesquisa() {
-        return termoPesquisa;
-    }
-
-    public TipoEmpresa[] getTipoEmpresa(){
+    public TipoEmpresa[] getTiposEmpresa(){
         return TipoEmpresa.values();
     }
 
     public Converter getRamoAtividadConverter() {
         return ramoAtividadConverter;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
     }
 }

@@ -23,21 +23,27 @@
     </f:metadata>
 
     <h:form>
-        <p:messages />
+        <p:messages >
+            <p:autoUpdate/>
+        </p:messages>
         <p:toolbar id="toolbar">
             <f:facet name="left">
-                <p:inputText placeholder="Digite aqui um termo para pesquisa..." 
+                <p:inputText id="termoPesquisa" placeholder="Digite aqui um termo para pesquisa..." 
                 size="30" value="#{gestaoEmpresasBean.termoPesquisa}"/>
             
             <p:commandButton value="Pesquisar" icon="fa fa-search"
-                actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable"/>
+                actionListener="#{gestaoEmpresasBean.pesquisar}"
+                process="@this termoPesquisa" update="empresasDataTable"/><ui:remove> informa o componente que vai atualizar </ui:remove>
             
             <span class="ui-separator">
                 <span class="ui-icon ui-icon-grip-dotted-vertical" />
             </span>
 
                 <p:commandButton value="Nova" icon="fa fa-plus" 
-                onclick="PF('empresaDialogWidgetVar').show()" />
+                actionListener="#{gestaoEmpresasBean.prepararNovaEmpresa}"
+                oncomplete="PF('empresaDialogWidgetVar').show()" 
+                process="@this"
+                update="empresaDialog"/><ui:remove> vai evitar erro na chamada de 'gestaoEmpresasBean.empresa ne null'</ui:remove>
 
                 <span class="ui-separator">
                     <span class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -59,7 +65,7 @@
 
         <p:dataTable  id="empresasDataTable" value="#{gestaoEmpresasBean.listaEmpresas}"
             var="empresa" emptyMessage="Nenhuma informação a ser exibida"
-            paginator="true" rows="4" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
+            paginator="true" rows="10" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
            
             <p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
                 <h:outputText value="#{empresa.razaoSocial}" />
@@ -78,20 +84,25 @@
                 <h:outputText value="#{empresa.ramoAtividade.descricao}" />
             </p:column>
         </p:dataTable>
-                           <ui:remove>widgetVar - espécie de variável usada para acessar dialog no cliente via JavaScript</ui:remove>     
-        <p:dialog header="Nova empresa" widgetVar="empresaDialogWidgetVar" modal="true"
+         
+            <ui:remove>widgetVar - espécie de variável usada para acessar dialog no cliente via JavaScript</ui:remove>     
+
+        <p:dialog id="empresaDialog" header="Nova empresa" widgetVar="empresaDialogWidgetVar" modal="true"
             resizable="false" closeOnEscape="true" >
-        <h:panelGrid columns="2">
+        <h:panelGrid id="empresaPanelGrid" columns="2"
+            rendered="#{gestaoEmpresasBean.empresa ne null}" > <ui:remove>não renderizar antes que propriedade empresa esteja instanciada (ne null - not equal null)</ui:remove>
             <p:outputLabel value="Razão Social" for="razaoSocial" />
-            <p:inputText id="razaoSocial" size="80" maxlength="120" />
+            <p:inputText id="razaoSocial" size="80" maxlength="120" 
+            value="#{gestaoEmpresasBean.empresa.razaoSocial}" />
 
             <p:outputLabel value="Nome Fantasia" for="nomeFantasia" />
-            <p:inputText id="nomeFantasia" size="80" maxlength="120" />
+            <p:inputText id="nomeFantasia" size="80" maxlength="120" 
+            value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
 
             <p:outputLabel value="Tipo empresa" for="tipo"/>
-            <p:selectOneMenu id="tipo">
+            <p:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}">
                 <f:selectItem itemLabel="Selecione..."/>
-                <f:selectItems value="#{gestaoEmpresasBean.tipoEmpresa}"
+                <f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
                 var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
                 itemValue="#{tipoEmpresa}"/>
                 <ui:remove>
@@ -102,20 +113,26 @@
             </p:selectOneMenu>
 
             <p:outputLabel value="CNPJ: " for="cnpj" />
-            <p:inputMask id="cnpj" mask="99.999.999/999-99" size="18" maxlength="18"/>
+            <p:inputMask id="cnpj" mask="99.999.999/999-99" size="18" maxlength="18"
+            value="#{gestaoEmpresasBean.empresa.cnpj}" />
 
             <p:outputLabel value="Data Fundação" for="dataFundacao"/>
-            <p:calendar id="dataFundacao" pattern="dd/MM/yyyy" size="30" />
+            <p:calendar id="dataFundacao" pattern="dd/MM/yyyy" size="30"
+            value="#{gestaoEmpresasBean.empresa.dataFundacao}" />
 
             <p:outputLabel value="Ramo Atividade" for="ramoAtividade"/>           
             <p:autoComplete id="ramoAtividade" size="80" 
+            value="#{gestaoEmpresasBean.empresa.ramoAtividade}"
             completeMethod="#{gestaoEmpresasBean.completarRamoAtividade}"
             converter="#{gestaoEmpresasBean.ramoAtividadConverter}" 
             var="ramoAtividade" itemLabel="#{ramoAtividade.descricao}"
             itemValue="#{ramoAtividade}" />
 
             <h:outputLabel /><ui:remove>somente para ocupar a coluna e assim ajustar a posição do botão</ui:remove>
-            <p:commandButton value="Salvar" />
+            <p:commandButton value="Salvar" actionListener="#{gestaoEmpresasBean.salvar}" 
+            update="empresasDataTable empresaPanelGrid"
+            oncomplete="PF('empresaDialogWidgetVar').hide()" process="empresaDialog" />
+
         </h:panelGrid>
         </p:dialog>
     </h:form>
