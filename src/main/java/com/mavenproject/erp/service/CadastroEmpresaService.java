@@ -1,13 +1,15 @@
 // regras de negócio
 package com.mavenproject.erp.service;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 
 import com.mavenproject.erp.model.Empresa;
 import com.mavenproject.erp.repository.Empresas;
 import com.mavenproject.erp.util.Transacional;
 
-public class CadastroEmpresaService {
+public class CadastroEmpresaService implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Inject // 
