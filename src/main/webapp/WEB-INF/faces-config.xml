@@ -7,5 +7,7 @@
         <locale-config>
             <default-locale>pt_BR</default-locale>
         </locale-config>
+        <!-- pesonalisa mensagens, de validação por exemplo -->
+        <message-bundle>com.mavenproject.erp.Messages</message-bundle>
     </application>
 </faces-config>

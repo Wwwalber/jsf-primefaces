@@ -8,6 +8,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
+
 import com.mavenproject.erp.model.Empresa;
 import com.mavenproject.erp.model.RamoAtividade;
 import com.mavenproject.erp.model.TipoEmpresa;
@@ -51,9 +53,13 @@ public class GestaoEmpresasBean implements Serializable{
         // acréscimo - ver se o usuário já disparou essa pesquisa
         if (jaHouverPesquisa()) {
             pesquisar();     // para atualizar        
+        }else{
+            todasEmpresas();
         }
-        messages.info("Empresa cadastrada com sucuesso!");
-    }
+        messages.info("Empresa salva com sucuesso!");
+        PrimeFaces instance = PrimeFaces.current();
+        instance.ajax().update("frm:empresasDataTable", "frm:messages");
+        }
 
     public void pesquisar(){
         listaEmpresas = empresas.pesquisar(termoPesquisa);

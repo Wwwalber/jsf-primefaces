@@ -16,10 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
@@ -33,7 +33,7 @@ public class Empresa implements Serializable {
     private Long id;
     
     // obrigatório e não vazio
-    @NotEmpty
+    @NotEmpty 
     @Column(name = "nome_fantasia", nullable = false, length = 80)
     private String nomeFantasia;
 
@@ -44,8 +44,8 @@ public class Empresa implements Serializable {
     private String razaoSocial;
     
     //@org.hibernate.validator.constraints.
+    @NotEmpty 
     @CNPJ
-    @NotNull
     @Column(nullable = false, length = 18)
     private String cnpj;
     
