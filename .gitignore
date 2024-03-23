@@ -32,3 +32,4 @@ nb-configuration.xml
 .code-workspace
 *Zone.Identifier*
 src/main/webapp/somente-p-comparar.java
+src/main/java/com/mavenproject/resources/naoSaoClassesJava.txt
