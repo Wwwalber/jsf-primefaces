@@ -44,7 +44,7 @@ public class Empresa implements Serializable {
     private String razaoSocial;
     
     //@org.hibernate.validator.constraints.
-    @NotEmpty 
+    @NotNull
     @CNPJ
     @Column(nullable = false, length = 18)
     private String cnpj;
