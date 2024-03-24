@@ -107,4 +107,14 @@ public class GestaoEmpresasBean implements Serializable{
     public Empresa getEmpresa() {
         return empresa;
     }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public boolean  isEmpresaSelecionada(){
+        //  se a empresa for fiferente de null e ...
+        return empresa != null && empresa.getId() != null;
+                // retorna true
+    }
 }

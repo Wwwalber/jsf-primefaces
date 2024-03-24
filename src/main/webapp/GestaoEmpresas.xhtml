@@ -51,9 +51,11 @@
                     <span class="ui-icon ui-icon-grip-dotted-vertical" />
                 </span>     
                 
-                <p:commandButton title="Editar" icon="fa fa-edit"/> 
+                <p:commandButton title="Editar" icon="fa fa-edit"
+                    disabled="#{not gestaoEmpresasBean.empresaSelecionada}" /> 
     
-                <p:commandButton title="Excluir" icon="fa fa-trash"/>
+                <p:commandButton title="Excluir" icon="fa fa-trash"
+                    disabled="#{not gestaoEmpresasBean.empresaSelecionada}" />
     
                 <span class="ui-separator">
                     <span class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -72,6 +74,10 @@
             rowKey="#{empresa.id}"
             ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
            
+            <p:ajax event="rowSelect" update="frm:toolbar"/>
+
+            <p:ajax event="rowUnselect" update="frm:toolbar"/>
+
             <p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
                 <h:outputText value="#{empresa.razaoSocial}" />
             </p:column>
