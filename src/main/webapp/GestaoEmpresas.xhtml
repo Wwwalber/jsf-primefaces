@@ -67,7 +67,10 @@
 
         <p:dataTable  id="empresasDataTable" value="#{gestaoEmpresasBean.listaEmpresas}"
             var="empresa" emptyMessage="Nenhuma informação a ser exibida"
-            paginator="true" rows="10" paginatorPosition="bottom"  ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
+            paginator="true" rows="10" paginatorPosition="bottom"  
+            selectionMode="single" selection="#{gestaoEmpresasBean.empresa}"
+            rowKey="#{empresa.id}"
+            ><ui:remove>a variável 'empresa' tem acesso lá na classe Java a entidade Empresa</ui:remove>
            
             <p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
                 <h:outputText value="#{empresa.razaoSocial}" />
