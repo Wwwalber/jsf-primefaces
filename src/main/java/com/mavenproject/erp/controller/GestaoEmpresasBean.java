@@ -1,6 +1,7 @@
 package com.mavenproject.erp.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.convert.Converter;
@@ -46,6 +47,10 @@ public class GestaoEmpresasBean implements Serializable{
 
     public void prepararNovaEmpresa(){
         empresa = new Empresa();
+    }
+
+    public void prepararEdicao(){
+        ramoAtividadConverter = new RamoAtividadeConverter(Arrays.asList(empresa.getRamoAtividade())); //o auto complete precisa saber fazer a conversão de um registro
     }
 
     public void salvar(){
