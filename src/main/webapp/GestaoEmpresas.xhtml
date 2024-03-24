@@ -44,8 +44,9 @@
                 actionListener="#{gestaoEmpresasBean.prepararNovaEmpresa}"
                 oncomplete="PF('empresaDialogWidgetVar').show()" 
                 process="@this"
-                update="empresaDialog"/><ui:remove> vai evitar erro na chamada de 'gestaoEmpresasBean.empresa ne null'</ui:remove>
-
+                update="empresaDialog"><ui:remove> vai evitar erro na chamada de 'gestaoEmpresasBean.empresa ne null'</ui:remove>
+                <p:resetInput target="empresaDialog" />
+            </p:commandButton>
                 <span class="ui-separator">
                     <span class="ui-icon ui-icon-grip-dotted-vertical" />
                 </span>     
